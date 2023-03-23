@@ -112,8 +112,8 @@ app.get("/getCardDetails", async function (req, res) {
       "&keyword=" +
       venue;
 
-    const eventDataPromise = fetch(url1).then((response) => response.json());
-    const venueDataPromise = fetch(url3).then((response) => response.json());
+    const eventDataPromise = axios.get(url1).then((response) => response.data);
+    const venueDataPromise = axios.get(url3).then((response) => response.data);
     const [eventData, venueData] = await Promise.all([
       eventDataPromise,
       venueDataPromise,
