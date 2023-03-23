@@ -1,0 +1,27 @@
+.tbl td {
+    text-align: center;
+  }
+
+  .tbl th{
+    text-align: center;
+  }
+
+  .favorites-title{
+    text-align: center;
+    color: aquamarine;
+  }
+
+
+  .tbl table {
+    counter-reset: row-num - 1;
+  }
+  .tbl tr {
+    counter-increment: row-num;
+  }
+  .tbl tr td:first-child::before {
+      content: counter(row-num);
+  }
+
+  .trashicon:hover{
+    cursor: pointer;
+  }

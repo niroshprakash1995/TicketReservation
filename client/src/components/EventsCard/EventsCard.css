@@ -1,0 +1,56 @@
+#eventData-props label {
+    font-size: 18px;
+    color: #68fbd8;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+#eventData-props p {
+    font-size: 15px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    color: white;
+    white-space: nowrap;
+}
+
+#eventData-image img {
+    max-height: 350px;
+    max-width: 450px;
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+    padding-top: 20px;
+}
+
+@media (max-width: 820px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .order-md-first {
+        order: 1;
+    }
+
+    .order-md-last {
+        order: 2;
+    }
+}
+
+.fa-square-facebook {
+    color: #4968ad;
+}
+
+.fa-twitter {
+    color: #49a1eb;
+}
+
+.social-container label {
+    margin-right: 1%;
+}
+
+.social-container a {
+    margin-left: 1%;
+    margin-right: 1%;
+}

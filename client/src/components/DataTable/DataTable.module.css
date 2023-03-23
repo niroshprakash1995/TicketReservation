@@ -1,0 +1,17 @@
+.table {
+    width: 50% !important;
+    text-align: center;
+}
+
+.table td {
+    text-align: center;
+}
+
+.table img {
+    width: 100px;
+    height: 60px;
+}
+
+.table tr:hover {
+    cursor: pointer;
+}

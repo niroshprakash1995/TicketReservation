@@ -1,0 +1,31 @@
+#venueDetails label {
+    font-size: 18px;
+    color: #68fbd8;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+#venueDetails p {
+    font-size: 15px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    color: white;
+    white-space: nowrap;
+}
+
+.showmore {
+    color: white;
+}
+
+.showmore-text,
+.showless-text {
+    color: #318CE7;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.show-more-less-clickable {
+    text-decoration: none !important;
+  }

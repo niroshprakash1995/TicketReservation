@@ -1,0 +1,54 @@
+form {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.formHeading {
+    text-align: center;
+    color: white;
+    opacity: 1;
+    margin: auto;
+    font-size: 40px;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.form-label {
+    color: #87CEFA;
+}
+
+.form-check-label {
+    color: #87CEFA;
+}
+
+#form-hr {
+    color: white;
+    opacity: 1;
+}
+
+.form-button {
+    width: 100px;
+}
+
+@media only screen and (min-width: 700px) {
+    .search-form {
+        max-width: 700px;
+    }
+
+}
+
+.req label:after {
+    content: " *";
+    color: red;
+}
+
+.rbt-highlight-text {
+    background-color: transparent !important;
+    font-weight: normal !important;
+}
+
+mark{
+    padding: 0 !important;
+}
+
+.rbt-input-hint{
+    display: none;
+}
