@@ -95,7 +95,7 @@ const TableRowItem = ({ item, id, setLocalStorageEmpty }) => {
   };
   return (
     <tr id={id}>
-      <td></td>
+      <td className="bold-column"></td>
       <td>{item.date}</td>
       <td>{item.name}</td>
       <td>{item.genres}</td>

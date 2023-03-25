@@ -27,61 +27,42 @@ function Search() {
 
       //1. Fetching events tab data - Start
       var id = eventData.id;
-      debugger;
       var date = eventData?.dates?.start?.localDate ?? "";
+      date = date.toLowerCase() === undefined ? "" : date;
       var localStorageDate = date;
       var time = eventData?.dates?.start?.localTime ?? "";
+      time = time.toLowerCase() === undefined ? "" : time;
       date = date + " " + time;
 
-      var attractionsLength = eventData?._embedded?.attractions?.length;
-      attractionsLength =
-        attractionsLength === undefined ? 0 : attractionsLength;
+      var attractionsLength = eventData?._embedded?.attractions?.length ?? 0;
       var artistsTeam = "";
       for (var i = 0; i < attractionsLength; i++) {
         if (i > 0) {
           artistsTeam = artistsTeam + " | ";
         }
-        var artistsTeamName = eventData?._embedded?.attractions[i]?.name;
+        var artistsTeamName = eventData?._embedded?.attractions[i]?.name ?? "";
         artistsTeamName =
-          artistsTeamName === undefined ||
-          artistsTeamName.toLowerCase() === "undefined"
-            ? ""
-            : artistsTeamName;
+          artistsTeamName.toLowerCase() === undefined ? "" : artistsTeamName;
         artistsTeam = artistsTeam + artistsTeamName;
       }
 
-      var venue = eventData?._embedded?.venues[0]?.name;
-      venue =
-        venue === undefined || venue.toLowerCase() === "undefined" ? "" : venue;
+      var venue = eventData?._embedded?.venues[0]?.name ?? "";
 
       //TO-DO : Issue fixed. Need to monitor
       if (eventData && Array.isArray(eventData.classifications)) {
-        var segmentName = eventData?.classifications[0]?.segment?.name;
+        var segmentName = eventData?.classifications[0]?.segment?.name ?? "";
         segmentName =
-          segmentName === undefined || segmentName.toLowerCase() === "undefined"
-            ? ""
-            : segmentName;
-        var genreName = eventData?.classifications[0]?.genre?.name;
-        genreName =
-          genreName === undefined || genreName.toLowerCase() === "undefined"
-            ? ""
-            : genreName;
-        var subGenreName = eventData?.classifications[0]?.subGenre?.name;
+          segmentName.toLowerCase() === "undefined" ? "" : segmentName;
+        var genreName = eventData?.classifications[0]?.genre?.name ?? "";
+        genreName = genreName.toLowerCase() === "undefined" ? "" : genreName;
+        var subGenreName = eventData?.classifications[0]?.subGenre?.name ?? "";
         subGenreName =
-          subGenreName === undefined ||
-          subGenreName.toLowerCase() === "undefined"
-            ? ""
-            : subGenreName;
-        var typeName = eventData?.classifications[0]?.type?.name;
-        typeName =
-          typeName === undefined || typeName.toLowerCase() === "undefined"
-            ? ""
-            : typeName;
-        var subTypeName = eventData?.classifications[0]?.subType?.name;
+          subGenreName.toLowerCase() === "undefined" ? "" : subGenreName;
+        var typeName = eventData?.classifications[0]?.type?.name ?? "";
+        typeName = typeName.toLowerCase() === "undefined" ? "" : typeName;
+        var subTypeName = eventData?.classifications[0]?.subType?.name ?? "";
         subTypeName =
-          subTypeName === undefined || subTypeName.toLowerCase() === "undefined"
-            ? ""
-            : subTypeName;
+          subTypeName.toLowerCase() === "undefined" ? "" : subTypeName;
 
         var genres = "";
         if (segmentName !== "") {
@@ -104,59 +85,60 @@ function Search() {
       var minPrice = "";
       var maxPrice = "";
       if (eventData && Array.isArray(eventData.priceRanges)) {
-        minPrice = eventData?.priceRanges[0]?.min;
-        maxPrice = eventData?.priceRanges[0]?.max;
+        minPrice = eventData?.priceRanges[0]?.min ?? 0;
+        maxPrice = eventData?.priceRanges[0]?.max ?? 0;
       }
-      minPrice = minPrice === undefined ? "" : minPrice;
-      maxPrice = maxPrice === undefined ? "" : maxPrice;
 
       var priceRanges = "";
-      if (minPrice !== "" || maxPrice !== "") {
-        priceRanges = minPrice + "-" + maxPrice;
+      if (minPrice !== "") {
+        priceRanges = minPrice;
+      }
+      if (maxPrice !== "") {
+        priceRanges = priceRanges + "-" + maxPrice;
       }
 
-      var ticketStatus = eventData?.dates?.status?.code;
+      var ticketStatus = eventData?.dates?.status?.code ?? "";
       ticketStatus =
-        ticketStatus === undefined || ticketStatus.toLowerCase() === "undefined"
-          ? ""
-          : ticketStatus;
-
+        ticketStatus.toLowerCase() === undefined ? "" : ticketStatus;
       var statusTextColor = "";
+      var statusText = "";
       switch (ticketStatus) {
         case "onsale":
           statusTextColor = "green";
+          statusText = "On Sale";
           break;
         case "offsale":
           statusTextColor = "red";
+          statusText = "Off Sale";
           break;
         case "canceled":
           statusTextColor = "black";
+          statusText = "Canceled";
           break;
         case "cancelled":
           statusTextColor = "black";
+          statusText = "Canceled";
           break;
         case "postponed":
           statusTextColor = "orange";
+          statusText = "Postponed";
           break;
         case "rescheduled":
           statusTextColor = "orange";
+          statusText = "Rescheduled";
           break;
         default:
           statusTextColor = "";
+          statusText = "";
       }
 
-      var ticketMasterUrl = eventData?.url;
-      ticketMasterUrl =
-        ticketMasterUrl === undefined ||
-        ticketMasterUrl.toLowerCase() === "undefined"
-          ? ""
-          : ticketMasterUrl;
+      ticketStatus = statusText;
 
-      var seatMap = eventData?.seatmap?.staticUrl;
-      seatMap =
-        seatMap === undefined || seatMap.toLowerCase() === "undefined"
-          ? ""
-          : seatMap;
+      var ticketMasterUrl = eventData?.url ?? "";
+      ticketMasterUrl =
+        ticketMasterUrl.toLowerCase() === "undefined" ? "" : ticketMasterUrl;
+      var seatMap = eventData?.seatmap?.staticUrl ?? "";
+      seatMap = seatMap.toLowerCase() === "undefined" ? "" : seatMap;
 
       var eventsDataJson = {
         id: id,
@@ -173,12 +155,10 @@ function Search() {
         localStorageDate: localStorageDate,
       };
       setEventsTabData(eventsDataJson);
-      //Fetching events tab data - End
 
       //2. Fetching spotify data - Start
       var spotifyDataJson = spotifyData;
       setSpotifyTabData(spotifyDataJson);
-      //Fetching spotify data - End
 
       //3. Fetching venue tab data - start
       var venueDataJson = {
@@ -191,51 +171,36 @@ function Search() {
       };
       var parentNode = venueData?._embedded?.venues[0] ?? "";
       if (parentNode !== "") {
-        var name = parentNode?.name;
-        name =
-          name === undefined || name.toLowerCase() === "undefined" ? "" : name;
-
+        var name = parentNode?.name ?? "";
+        name = name.toLowerCase() === "undefined" ? "" : name;
         var address = "";
-        var addressLine1 = parentNode?.address?.line1;
-        address =
-          addressLine1 === undefined ||
-          addressLine1.toLowerCase() === "undefined"
-            ? ""
-            : addressLine1;
-
-        var city = parentNode?.city?.name;
-        address =
-          city === undefined || city.toLowerCase() === "undefined"
-            ? address
-            : address + ", " + city;
-
-        var state = parentNode?.state?.name;
-        address =
-          state === undefined || state.toLowerCase() === "undefined"
-            ? address
-            : address + ", " + state;
-
-        //TO-DO : Format the phone number
-        var phoneNumber = parentNode?.boxOfficeInfo?.phoneNumberDetail;
-        phoneNumber = phoneNumber === undefined ? "" : phoneNumber;
-
+        var addressLine = parentNode?.address?.line1 ?? "";
+        addressLine =
+          addressLine.toLowerCase() === "undefined" ? "" : addressLine;
+        var city = parentNode?.city?.name ?? "";
+        city = city.toLowerCase() === "undefined" ? "" : city;
+        var state = parentNode?.state?.name ?? "";
+        state = state.toLowerCase() === "undefined" ? "" : state;
+        if (addressLine !== "") {
+          address = addressLine;
+        }
+        if (city !== "") {
+          address = address + ", " + city;
+        }
+        if (state !== "") {
+          address = address + ", " + state;
+        }
+        var phoneNumber = parentNode?.boxOfficeInfo?.phoneNumberDetail ?? "";
+        phoneNumber =
+          phoneNumber.toLowerCase() === "undefined" ? "" : phoneNumber;
         var openHoursDetail = parentNode?.boxOfficeInfo?.openHoursDetail ?? "";
         openHoursDetail =
-          openHoursDetail === undefined ||
-          openHoursDetail.toLowerCase() === "undefined"
-            ? ""
-            : openHoursDetail;
-
+          openHoursDetail.toLowerCase() === "undefined" ? "" : openHoursDetail;
         var generalRule = parentNode?.generalInfo?.generalRule ?? "";
         generalRule =
-          generalRule === undefined || generalRule.toLowerCase() === "undefined"
-            ? ""
-            : generalRule;
+          generalRule.toLowerCase() === "undefined" ? "" : generalRule;
         var childRule = parentNode?.generalInfo?.childRule ?? "";
-        childRule =
-          generalRule === undefined || childRule.toLowerCase() === "undefined"
-            ? ""
-            : childRule;
+        childRule = childRule.toLowerCase() === "undefined" ? "" : childRule;
 
         venueDataJson = {
           name: name,
@@ -248,7 +213,6 @@ function Search() {
       }
 
       setVenueTabData(venueDataJson);
-      //Fetch venue tab data - end
     }
   };
 

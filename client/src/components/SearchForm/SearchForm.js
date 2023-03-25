@@ -97,7 +97,10 @@ function SearchForm({ setData, setNoResultsFlag }) {
           var events = response?.data?._embedded?.events ?? "";
           if (events.length > 1) {
             events.sort((a1, a2) => {
-              if (a1.dates.start.dateTime > a2.dates.start.dateTime) {
+              if (
+                a1.dates.start.localDate + a1.dates.start.localTime >
+                a2.dates.start.localDate + a2.dates.start.localTime
+              ) {
                 return 1;
               } else {
                 return -1;

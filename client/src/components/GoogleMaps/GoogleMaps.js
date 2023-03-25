@@ -18,7 +18,7 @@ function GoogleMaps({ lat, lon }) {
 
   return (
     <GoogleMap
-      zoom={10}
+      zoom={15}
       center={{ lat: lat, lng: lon }}
       mapContainerClassName={mapContainerClassName}
     >

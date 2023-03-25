@@ -50,7 +50,7 @@ const TableRow = ({ item, id, getCardDetails }) => {
         getCardDetails(id, item._embedded.venues[0].name, item.name)
       }
     >
-      <td>
+      <td className={`${styles["first-column"]}`}>
         {item.dates.start.localDate} <br />
         {item.dates.start.localTime}
       </td>

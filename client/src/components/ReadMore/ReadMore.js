@@ -9,6 +9,8 @@ function ReadMore({ inputText }) {
   if (inputText.length > 95) {
     const lastSpaceIndex = inputText.lastIndexOf(" ", 95);
     slicedText = inputText.slice(0, lastSpaceIndex) + " ";
+  } else {
+    slicedText = inputText;
   }
   const resultString = isTruncated ? slicedText : inputText;
 
@@ -25,7 +27,7 @@ function ReadMore({ inputText }) {
               <div>
                 <span
                   style={{ display: "block", color: "#49a1eb" }}
-                  class="pointer"
+                  className="pointer"
                 >
                   <span style={{ borderBottom: "1px solid" }}>Show more</span>
                   <FaAngleDown />

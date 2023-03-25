@@ -243,8 +243,8 @@ var server = app.listen(PORT, function () {
   console.log("App listening at http://%s:%s", host, port);
 });
 
-app.use(express.static(path.join(__dirname, "build")));
-
-app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+const root = require("path").join(__dirname, "build");
+app.use(express.static(root));
+app.get("*", (req, res) => {
+  res.sendFile("index.html", { root });
 });

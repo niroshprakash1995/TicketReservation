@@ -27,6 +27,11 @@
 .MuiTabs-indicator{
     border-bottom: 3px solid mediumblue !important;
 }
+
+.Mui-selected{
+    font-weight: bold !important;
+}
+
 .backbutton {
     color: white !important;
 }

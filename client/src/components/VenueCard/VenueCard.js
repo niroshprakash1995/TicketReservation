@@ -1,6 +1,4 @@
 import "../VenueCard/VenueCard.css";
-// import ShowMoreText from "react-show-more-text";
-// import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
@@ -18,13 +16,14 @@ function VenueCard({ venueTabData }) {
       ? ""
       : venueName;
   mapAddress = venueName;
-
   var venueAddress = venueTabData?.address;
   venueAddress =
     venueAddress === undefined || venueAddress.toLowerCase() === "undefined"
       ? ""
       : venueAddress;
-  mapAddress = mapAddress + ", " + venueAddress;
+  if (venueAddress !== "") {
+    mapAddress = mapAddress + ", " + venueAddress;
+  }
 
   const showMap = async () => {
     var key = "AIzaSyCXalOHLiAuigAYK-BHrWvKTknN1-LzdJI";
@@ -97,36 +96,38 @@ function VenueCard({ venueTabData }) {
           </div>
         </div>
       </div>
-      <div className="container pt-3 pb-3 justify-content-center text-center">
-        <Button
-          variant="danger"
-          className="w-30"
-          onClick={() => {
-            showMap();
-          }}
-        >
-          Show venue on Google Map
-        </Button>
+      {mapAddress && (
+        <div className="container pt-3 pb-3 justify-content-center text-center">
+          <Button
+            variant="danger"
+            className="w-30"
+            onClick={() => {
+              showMap();
+            }}
+          >
+            Show venue on Google Map
+          </Button>
 
-        <Modal show={showGoogleMap} onHide={hideMap}>
-          <Modal.Header>
-            <Modal.Title>Event Venue</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <GoogleMaps lat={lat} lon={lon}></GoogleMaps>
-          </Modal.Body>
-          <Modal.Footer className="d-flex justify-content-start">
-            <Button
-              variant="btn btn-dark"
-              onClick={() => {
-                hideMap();
-              }}
-            >
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      </div>
+          <Modal show={showGoogleMap} onHide={hideMap}>
+            <Modal.Header>
+              <Modal.Title>Event Venue</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <GoogleMaps lat={lat} lon={lon}></GoogleMaps>
+            </Modal.Body>
+            <Modal.Footer className="d-flex justify-content-start">
+              <Button
+                variant="btn btn-dark"
+                onClick={() => {
+                  hideMap();
+                }}
+              >
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        </div>
+      )}
     </div>
   );
 }

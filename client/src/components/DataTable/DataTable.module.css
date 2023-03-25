@@ -15,3 +15,7 @@
 .table tr:hover {
     cursor: pointer;
 }
+
+.first-column{
+    font-weight: bold;
+}

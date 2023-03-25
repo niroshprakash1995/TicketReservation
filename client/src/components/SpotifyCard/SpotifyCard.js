@@ -8,7 +8,6 @@ import Carousel from "react-bootstrap/Carousel";
 import Message from "../Message/Message";
 
 function SpotifyCard({ spotifyTabData }) {
-  debugger;
   if (spotifyTabData.length === 0) {
     return (
       <div
@@ -34,7 +33,7 @@ function SpotifyCard({ spotifyTabData }) {
                 <div className="text-center col-3 justify-content-center align-items-center containerFull">
                   <img
                     className="rounded-circle"
-                    alt="avatar1"
+                    alt="Not available"
                     src={item.image}
                     style={{ height: "150px", width: "auto" }}
                   />

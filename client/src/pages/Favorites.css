@@ -25,3 +25,7 @@
   .trashicon:hover{
     cursor: pointer;
   }
+
+  .bold-column{
+    font-weight: bold;
+  }
