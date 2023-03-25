@@ -1,10 +1,11 @@
 import "../VenueCard/VenueCard.css";
-import ShowMoreText from "react-show-more-text";
-import { FaAngleDown, FaAngleUp } from "react-icons/fa";
+// import ShowMoreText from "react-show-more-text";
+// import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import GoogleMaps from "../GoogleMaps/GoogleMaps";
+import ReadMore from "../ReadMore/ReadMore";
 
 function VenueCard({ venueTabData }) {
   const [showGoogleMap, setShowGoogleMap] = useState(false);
@@ -78,97 +79,19 @@ function VenueCard({ venueTabData }) {
             {venueTabData?.openHoursDetail && (
               <div className="pb-3">
                 <label>Open Hours</label>
-                <ShowMoreText
-                  lines={2}
-                  more={
-                    <span style={{ display: "inline-block", color: "#49a1eb" }}>
-                      <span style={{ borderBottom: "1px solid" }}>
-                        Show more
-                      </span>
-                      <FaAngleDown />
-                    </span>
-                  }
-                  less={
-                    <span style={{ display: "block", color: "#49a1eb" }}>
-                      <span style={{ borderBottom: "1px solid" }}>
-                        Show less
-                      </span>
-                      <FaAngleUp />
-                    </span>
-                  }
-                  className="showmore"
-                  anchorClass="show-more-less-clickable"
-                  expanded={false}
-                  truncatedEndingComponent={
-                    <div style={{ display: "block" }}></div>
-                  }
-                >
-                  {venueTabData?.openHoursDetail}
-                </ShowMoreText>
+                <ReadMore inputText={venueTabData?.openHoursDetail}></ReadMore>
               </div>
             )}
             {venueTabData?.generalRule && (
               <div className="pb-3">
                 <label>General Rule</label>
-                <ShowMoreText
-                  lines={2}
-                  more={
-                    <span style={{ display: "inline-block", color: "#49a1eb" }}>
-                      <span style={{ borderBottom: "1px solid" }}>
-                        Show more
-                      </span>
-                      <FaAngleDown />
-                    </span>
-                  }
-                  less={
-                    <span style={{ display: "block", color: "#49a1eb" }}>
-                      <span style={{ borderBottom: "1px solid" }}>
-                        Show less
-                      </span>
-                      <FaAngleUp />
-                    </span>
-                  }
-                  className="showmore"
-                  anchorClass="show-more-less-clickable"
-                  expanded={false}
-                  truncatedEndingComponent={
-                    <div style={{ display: "block" }}></div>
-                  }
-                >
-                  {venueTabData?.generalRule}
-                </ShowMoreText>
+                <ReadMore inputText={venueTabData?.generalRule}></ReadMore>
               </div>
             )}
             {venueTabData?.childRule && (
               <div className="pb-3">
                 <label>Child Rule</label>
-                <ShowMoreText
-                  lines={2}
-                  more={
-                    <span style={{ display: "inline-block", color: "#49a1eb" }}>
-                      <span style={{ borderBottom: "1px solid" }}>
-                        Show more
-                      </span>
-                      <FaAngleDown />
-                    </span>
-                  }
-                  less={
-                    <span style={{ display: "block", color: "#49a1eb" }}>
-                      <span style={{ borderBottom: "1px solid" }}>
-                        Show less
-                      </span>
-                      <FaAngleUp />
-                    </span>
-                  }
-                  className="showmore"
-                  anchorClass="show-more-less-clickable"
-                  expanded={false}
-                  truncatedEndingComponent={
-                    <div style={{ display: "block" }}></div>
-                  }
-                >
-                  {venueTabData?.childRule}
-                </ShowMoreText>
+                <ReadMore inputText={venueTabData?.childRule}></ReadMore>
               </div>
             )}
           </div>

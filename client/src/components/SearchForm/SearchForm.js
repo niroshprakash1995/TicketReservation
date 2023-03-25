@@ -46,6 +46,7 @@ function SearchForm({ setData, setNoResultsFlag }) {
     var geohash = "";
     if (checked) {
       geohash = await getLocation();
+      makeRestAPICall(geohash);
     } else {
       var address = location;
       var key = "AIzaSyCXalOHLiAuigAYK-BHrWvKTknN1-LzdJI";
@@ -60,11 +61,11 @@ function SearchForm({ setData, setNoResultsFlag }) {
         var latitude = jsonResponse.results[0].geometry.location.lng;
         var longitude = jsonResponse.results[0].geometry.location.lat;
         geohash = ngeohash.encode(longitude, latitude, 7);
+        makeRestAPICall(geohash);
       } else {
         setNoResultsFlag(true);
       }
     }
-    makeRestAPICall(geohash);
   };
   const getLocation = async () => {
     const url = "https://ipinfo.io/?token=b3a26d7c4db9dc";
@@ -199,7 +200,6 @@ function SearchForm({ setData, setNoResultsFlag }) {
               label="Auto-detect your location"
               checked={checked}
               onChange={() => {
-                debugger;
                 if (!checked) {
                   setLocation("");
                 } else {

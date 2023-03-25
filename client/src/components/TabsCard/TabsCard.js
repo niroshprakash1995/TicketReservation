@@ -48,7 +48,6 @@ function TabsCard({
     //Add item to local storage
     else {
       var localStorageDate = eventsTabData.localStorageDate;
-      debugger;
       var name = eventsTabData.name;
       var venue = eventsTabData.venue;
       var genres = eventsTabData.genres;

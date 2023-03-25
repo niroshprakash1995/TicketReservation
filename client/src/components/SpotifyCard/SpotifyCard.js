@@ -8,6 +8,7 @@ import Carousel from "react-bootstrap/Carousel";
 import Message from "../Message/Message";
 
 function SpotifyCard({ spotifyTabData }) {
+  debugger;
   if (spotifyTabData.length === 0) {
     return (
       <div
@@ -37,7 +38,7 @@ function SpotifyCard({ spotifyTabData }) {
                     src={item.image}
                     style={{ height: "150px", width: "auto" }}
                   />
-                  <p className="text-center d-flex justify-content-center text-uppercase font-weight-bold">
+                  <p className="text-center d-flex justify-content-center font-weight-bold">
                     {item.name}
                   </p>
                 </div>
@@ -132,7 +133,7 @@ function SpotifyCard({ spotifyTabData }) {
                       src={item.image}
                       style={{ height: "150px", width: "auto" }}
                     />
-                    <p className="text-center d-flex justify-content-center text-uppercase font-weight-bold">
+                    <p className="text-center d-flex justify-content-center font-weight-bold">
                       {item.name}
                     </p>
                   </div>

@@ -27,9 +27,10 @@ function Search() {
 
       //1. Fetching events tab data - Start
       var id = eventData.id;
-      var date = eventData?.dates?.start?.localDate;
+      debugger;
+      var date = eventData?.dates?.start?.localDate ?? "";
       var localStorageDate = date;
-      var time = eventData?.dates?.start?.localTime;
+      var time = eventData?.dates?.start?.localTime ?? "";
       date = date + " " + time;
 
       var attractionsLength = eventData?._embedded?.attractions?.length;
@@ -218,25 +219,23 @@ function Search() {
         var phoneNumber = parentNode?.boxOfficeInfo?.phoneNumberDetail;
         phoneNumber = phoneNumber === undefined ? "" : phoneNumber;
 
-        var openHoursDetail =
-          parentNode?.boxOfficeInfo?.phoneNumberDetail?.openHoursDetail;
+        var openHoursDetail = parentNode?.boxOfficeInfo?.openHoursDetail ?? "";
         openHoursDetail =
           openHoursDetail === undefined ||
           openHoursDetail.toLowerCase() === "undefined"
             ? ""
             : openHoursDetail;
 
-        var generalRule = parentNode?.generalInfo?.generalRule;
+        var generalRule = parentNode?.generalInfo?.generalRule ?? "";
         generalRule =
           generalRule === undefined || generalRule.toLowerCase() === "undefined"
             ? ""
             : generalRule;
-
-        var childRule = parentNode?.generalInfo?.childRule;
+        var childRule = parentNode?.generalInfo?.childRule ?? "";
         childRule =
-          generalRule === undefined || generalRule.toLowerCase() === "undefined"
+          generalRule === undefined || childRule.toLowerCase() === "undefined"
             ? ""
-            : generalRule;
+            : childRule;
 
         venueDataJson = {
           name: name,
