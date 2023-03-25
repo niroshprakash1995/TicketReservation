@@ -20,7 +20,6 @@ function SearchForm({ setData, setNoResultsFlag }) {
 
   //For autocomplete functionality
   const [keywords, setKeywords] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
 
   const keywordClear = () => {
     setKeyword("");
@@ -28,17 +27,36 @@ function SearchForm({ setData, setNoResultsFlag }) {
   };
 
   const handleSearch = (param) => {
-    setIsLoading(true);
+    setKeywords([]);
+    const searchingItem = document.querySelector(
+      ".rbt-menu .dropdown-item.disabled"
+    );
+    if (searchingItem) {
+      searchingItem.textContent = "";
+      const spinner = document.createElement("div");
+      spinner.classList.add(
+        "spinner-border",
+        "spinner-border-thin",
+        "text-primary"
+      );
+      spinner.setAttribute("role", "status");
+      const srOnly = document.createElement("span");
+      srOnly.classList.add("sr-only");
+      spinner.appendChild(srOnly);
+      searchingItem.appendChild(spinner);
+    }
+
+    // setTimeout(() => {
     axios
       .get("/keywordsearch", { params: { keyword: param } })
       .then((response) => {
         setKeywords(response.data.keywords);
-        setIsLoading(false);
       })
       .catch((error) => {
         console.log("Error in keyword search at client");
         console.log(error);
       });
+    // }, 500);
   };
 
   const handleSubmit = async (event) => {
@@ -134,7 +152,7 @@ function SearchForm({ setData, setNoResultsFlag }) {
                 isLoading={false}
                 options={keywords ?? []}
                 labelKey="name"
-                minLength={2}
+                minLength={1}
                 onSearch={handleSearch}
                 filterBy={() => true}
                 value={keyword}
@@ -142,12 +160,7 @@ function SearchForm({ setData, setNoResultsFlag }) {
                   setKeyword(e[0]);
                 }}
                 ref={typeaheadRef}
-                inputProps={{
-                  required: true,
-                  className: `form-control ${
-                    isLoading ? "position-relative" : ""
-                  }`,
-                }}
+                placeholder=""
               />
             </Form.Group>
           </Form.Group>

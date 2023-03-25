@@ -52,3 +52,15 @@ mark{
 .rbt-input-hint{
     display: none;
 }
+
+.rbt-aux{
+    background-color: white;
+    border-radius: 5px;
+    height: 25px;
+}
+
+.spinner-border-thin{
+width: 0.9rem;
+  height: 0.9rem;
+  border-width: 0.1em;
+}
