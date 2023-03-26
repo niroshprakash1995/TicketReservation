@@ -46,7 +46,6 @@ function SearchForm({ setData, setNoResultsFlag }) {
       searchingItem.appendChild(spinner);
     }
 
-    // setTimeout(() => {
     axios
       .get("/keywordsearch", { params: { keyword: param } })
       .then((response) => {
@@ -56,7 +55,6 @@ function SearchForm({ setData, setNoResultsFlag }) {
         console.log("Error in keyword search at client");
         console.log(error);
       });
-    // }, 500);
   };
 
   const handleSubmit = async (event) => {
@@ -159,8 +157,15 @@ function SearchForm({ setData, setNoResultsFlag }) {
                 onChange={(e) => {
                   setKeyword(e[0]);
                 }}
+                onBlur={() => {
+                  setKeyword(typeaheadRef.current.getInput().value);
+                  // if (keywords.indexOf(keyword) === -1) {
+                  //   setKeyword("");
+                  //   typeaheadRef.current.clear();
+                  // }
+                }}
                 ref={typeaheadRef}
-                placeholder=""
+                inputProps={{ required: true }}
               />
             </Form.Group>
           </Form.Group>

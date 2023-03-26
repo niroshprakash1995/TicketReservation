@@ -50,6 +50,9 @@
    .container {
     flex-direction: row;
     }
+    .MuiButtonBase-root{
+        width: auto !important;
+    }
 }
 @media screen and (max-width: 768px) {
     #category {
