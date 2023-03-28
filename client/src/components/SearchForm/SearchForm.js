@@ -205,6 +205,7 @@ function SearchForm({ setData, setNoResultsFlag }) {
               disabled={checked}
               value={location}
               id="location"
+              autoComplete="off"
               onChange={(e) => {
                 setLocation(e.target.value);
               }}
@@ -244,6 +245,7 @@ function SearchForm({ setData, setNoResultsFlag }) {
                   keywordClear();
                   setDistance(10);
                   setLocation("");
+                  setCategory("Default");
                   setData([]);
                   setNoResultsFlag(false);
                 }}

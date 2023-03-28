@@ -47,7 +47,6 @@ function Search() {
 
       var venue = eventData?._embedded?.venues[0]?.name ?? "";
 
-      //TO-DO : Issue fixed. Need to monitor
       if (eventData && Array.isArray(eventData.classifications)) {
         var segmentName = eventData?.classifications[0]?.segment?.name ?? "";
         segmentName =

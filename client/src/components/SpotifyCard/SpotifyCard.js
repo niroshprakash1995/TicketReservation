@@ -140,7 +140,7 @@ function SpotifyCard({ spotifyTabData }) {
                   <div className="d-flex col-2 justify-content-center align-items-center containerFull">
                     <div className="d-flex flex-column align-items-center">
                       <p className="">Popularity</p>
-                      <div style={{ width: 34, height: 34 }}>
+                      <div style={{ width: 34, height: 36 }}>
                         <CircularProgressbar
                           value={item.popularity}
                           text={`${item.popularity}`}
@@ -150,7 +150,7 @@ function SpotifyCard({ spotifyTabData }) {
                   </div>
 
                   <div className="d-flex col-2 justify-content-center align-items-center containerFull">
-                    <div className="d-flex flex-column align-items-center">
+                    <div className="d-flex flex-column align-items-center followers">
                       <p>Followers</p>
                       <label className="pb-2">
                         {item.followers.toLocaleString()}

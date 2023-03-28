@@ -13,7 +13,7 @@ function EventsCard({ eventsTabData }) {
         <div className="container">
           <div className="row justify-content-center text-center">
             <div className="col-md-6 col-lg-5 order-md-first mx-auto">
-              <div id="eventData-props" className="text-center pt-5 pb-5">
+              <div id="eventData-props" className="text-center pt-2 pb-5">
                 {eventsTabData.date && (
                   <div id="eventData-date-div" className="pb-3">
                     <label>Date</label>
@@ -76,7 +76,6 @@ function EventsCard({ eventsTabData }) {
                       target="_blank"
                       href={eventsTabData.url}
                       rel="noreferrer"
-                      style={{ color: "#49a1eb" }}
                     >
                       Ticketmaster
                     </a>
@@ -84,7 +83,7 @@ function EventsCard({ eventsTabData }) {
                 )}
               </div>
             </div>
-            <div className="col-md-6 col-lg-6 order-md-last align-self-center pt-5 pb-5">
+            <div className="col-md-6 col-lg-6 order-md-last align-self-center pt-2 pb-5">
               <div className="text-center">
                 {eventsTabData.seatMap && (
                   <img

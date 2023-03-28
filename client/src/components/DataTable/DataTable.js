@@ -12,7 +12,7 @@ function DataTable({ tableData, getCardDetails }) {
   ];
 
   return (
-    <div className="table-responsive pt-5">
+    <div className="table-responsive pt-5 ps-2 pe-2">
       <Table
         striped
         className={`${styles["table"]} w-75 mx-auto rounded rounded-3 overflow-hidden`}
