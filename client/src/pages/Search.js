@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import DataTable from "../components/DataTable/DataTable";
-//import DetailsCard from "../components/DetailsCard/DetailsCard";
 import Message from "../components/Message/Message";
 import SearchForm from "../components/SearchForm/SearchForm";
 import TabsCard from "../components/TabsCard/TabsCard";

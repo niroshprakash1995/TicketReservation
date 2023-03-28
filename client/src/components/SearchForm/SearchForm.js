@@ -159,10 +159,6 @@ function SearchForm({ setData, setNoResultsFlag }) {
                 }}
                 onBlur={() => {
                   setKeyword(typeaheadRef.current.getInput().value);
-                  // if (keywords.indexOf(keyword) === -1) {
-                  //   setKeyword("");
-                  //   typeaheadRef.current.clear();
-                  // }
                 }}
                 ref={typeaheadRef}
                 inputProps={{ required: true }}
@@ -214,7 +210,6 @@ function SearchForm({ setData, setNoResultsFlag }) {
               }}
             />
           </Form.Group>
-          {/* TO-DO : Check the below code */}
           <Form.Group className="mb-3" id="formBasicCheckbox">
             <Form.Check
               type="checkbox"
@@ -223,8 +218,6 @@ function SearchForm({ setData, setNoResultsFlag }) {
               onChange={() => {
                 if (!checked) {
                   setLocation("");
-                } else {
-                  // setGeohash('')
                 }
                 setChecked(!checked);
               }}

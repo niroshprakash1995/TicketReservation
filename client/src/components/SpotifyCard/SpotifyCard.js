@@ -27,7 +27,7 @@ function SpotifyCard({ spotifyTabData }) {
     return (
       <div className="spotify-card w-100">
         {spotifyTabData.map((item, index) => (
-          <>
+          <div key={index}>
             <div className="pt-3 d-flex text-center justify-content-center">
               <div className="d-flex container pb-1 flex-wrap align-items-center justify-content-center">
                 <div className="text-center col-3 justify-content-center align-items-center containerFull">
@@ -107,7 +107,7 @@ function SpotifyCard({ spotifyTabData }) {
                 />
               )}
             </div>
-          </>
+          </div>
         ))}
       </div>
     );

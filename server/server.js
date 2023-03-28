@@ -155,8 +155,7 @@ app.get("/getCardDetails", async function (req, res) {
     spotifyApi.setAccessToken(spotifyToken);
 
     var spotifyData = [];
-    //To fetch artist related data
-    for (var j = 0; j < artistsNamesArray.length; j++) {
+    const artistPromises = artistsNamesArray.map(async (artistName) => {
       var JSONObj = {
         name: "",
         image: "",
@@ -168,7 +167,7 @@ app.get("/getCardDetails", async function (req, res) {
         album3img: "",
       };
       try {
-        const response = await spotifyApi.searchArtists(artistsNamesArray[j]);
+        const response = await spotifyApi.searchArtists(artistName);
         var artistIdVal = response?.body?.artists?.items[0]?.id ?? "";
         if (artistIdVal != "") {
           artistsIdArray.push(artistIdVal);
@@ -180,13 +179,12 @@ app.get("/getCardDetails", async function (req, res) {
           response?.body?.artists?.items[0]?.popularity ?? "";
         JSONObj.spotifyLink =
           response?.body?.artists?.items[0]?.external_urls?.spotify ?? "";
-        spotifyData.push(JSONObj);
+        return JSONObj;
       } catch (error) {
         if (error.statusCode === 401) {
-          //Token has expired - Need to generate the token and make the call again
           const token = await spotifyApi.clientCredentialsGrant();
           spotifyApi.setAccessToken(token.body.access_token);
-          const response = await spotifyApi.searchArtists(artistsNamesArray[j]);
+          const response = await spotifyApi.searchArtists(artistName);
           var artistIdVal = response?.body?.artists?.items[0]?.id ?? "";
           if (artistIdVal != "") {
             artistsIdArray.push(artistIdVal);
@@ -199,28 +197,35 @@ app.get("/getCardDetails", async function (req, res) {
             response?.body?.artists?.items[0]?.popularity ?? "";
           JSONObj.spotifyLink =
             response?.body?.artists?.items[0]?.external_urls?.spotify ?? "";
-          spotifyData.push(JSONObj);
+          return JSONObj;
         } else {
           console.error(error);
         }
       }
-    }
+    });
+
+    spotifyData = await Promise.all(artistPromises);
 
     //To fetch images for carousel
-    for (var i = 0; i < artistsNamesArray.length; i++) {
-      try {
-        const response = await spotifyApi.getArtistAlbums(artistsIdArray[i], {
-          limit: 3,
-        });
+    try {
+      const responses = await Promise.all(
+        artistsIdArray.map((id) =>
+          spotifyApi.getArtistAlbums(id, {
+            limit: 3,
+          })
+        )
+      );
+
+      responses.forEach((response, i) => {
         spotifyData[i].album1img =
           response?.body?.items[0]?.images[0]?.url ?? "";
         spotifyData[i].album2img =
           response?.body?.items[1]?.images[0]?.url ?? "";
         spotifyData[i].album3img =
           response?.body?.items[2]?.images[0]?.url ?? "";
-      } catch (error) {
-        console.error(error);
-      }
+      });
+    } catch (error) {
+      console.error(error);
     }
 
     const spotifyDataJson = JSON.stringify(spotifyData);

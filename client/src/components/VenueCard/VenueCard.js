@@ -108,7 +108,7 @@ function VenueCard({ venueTabData }) {
             Show venue on Google Map
           </Button>
 
-          <Modal show={showGoogleMap} onHide={hideMap}>
+          <Modal show={showGoogleMap} onHide={hideMap} backdrop="static">
             <Modal.Header>
               <Modal.Title>Event Venue</Modal.Title>
             </Modal.Header>
