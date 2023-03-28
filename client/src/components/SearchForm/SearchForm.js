@@ -109,7 +109,6 @@ function SearchForm({ setData, setNoResultsFlag }) {
           setNoResultsFlag(true);
           setData([]);
         } else {
-          //To-do: Handle exceptions here
           var events = response?.data?._embedded?.events ?? "";
           if (events.length > 1) {
             events.sort((a1, a2) => {

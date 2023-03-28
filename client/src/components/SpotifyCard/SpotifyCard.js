@@ -128,7 +128,7 @@ function SpotifyCard({ spotifyTabData }) {
                   <div className="text-center col-3 justify-content-center align-items-center containerFull">
                     <img
                       className="rounded-circle"
-                      alt="avatar1"
+                      alt="ArtistIcon"
                       src={item.image}
                       style={{ height: "150px", width: "auto" }}
                     />
