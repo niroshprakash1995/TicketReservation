@@ -8,21 +8,7 @@ import Carousel from "react-bootstrap/Carousel";
 import Message from "../Message/Message";
 
 function SpotifyCard({ spotifyTabData }) {
-  var emptyData = false;
-  if (
-    spotifyTabData[0].album1img === "" &&
-    spotifyTabData[0].album2img === "" &&
-    spotifyTabData[0].album3img === "" &&
-    spotifyTabData[0].followers === "" &&
-    spotifyTabData[0].image === "" &&
-    spotifyTabData[0].name === "" &&
-    spotifyTabData[0].popularity === "" &&
-    spotifyTabData[0].spotifyLink === ""
-  ) {
-    emptyData = true;
-  }
-
-  if (spotifyTabData.length === 0 || emptyData) {
+  if (spotifyTabData.length === 0) {
     return (
       <div
         className="spotify-card justify-content-center align-items-center w-100"
@@ -39,7 +25,12 @@ function SpotifyCard({ spotifyTabData }) {
     );
   } else if (spotifyTabData.length === 1) {
     return (
-      <div className="spotify-card w-100">
+      <div
+        className="spotify-card w-100"
+        style={{
+          minHeight: "200px",
+        }}
+      >
         {spotifyTabData.map((item, index) => (
           <div key={index}>
             <div className="pt-3 d-flex text-center justify-content-center">
