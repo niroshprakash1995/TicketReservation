@@ -179,26 +179,7 @@ app.get("/getCardDetails", async function (req, res) {
           response?.body?.artists?.items[0]?.external_urls?.spotify ?? "";
         return JSONObj;
       } catch (error) {
-        if (error.statusCode === 401) {
-          const token = await spotifyApi.clientCredentialsGrant();
-          spotifyApi.setAccessToken(token.body.access_token);
-          const response = await spotifyApi.searchArtists(artistName);
-          var artistIdVal = response?.body?.artists?.items[0]?.id ?? "";
-          if (artistIdVal != "") {
-            artistsIdArray.push(artistIdVal);
-          }
-          JSONObj.name = response?.body?.artists?.items[0]?.name ?? "";
-          JSONObj.image =
-            response?.body?.artists?.items[0]?.images[0]?.url ?? "";
-          JSONObj.followers = response.body.artists.items[0].followers.total;
-          JSONObj.popularity =
-            response?.body?.artists?.items[0]?.popularity ?? "";
-          JSONObj.spotifyLink =
-            response?.body?.artists?.items[0]?.external_urls?.spotify ?? "";
-          return JSONObj;
-        } else {
-          console.error(error);
-        }
+        console.error(error);
       }
     });
 
