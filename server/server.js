@@ -1,7 +1,6 @@
 var express = require("express");
 var app = express();
 const axios = require("axios");
-const path = require("path");
 require("dotenv").config();
 const ticketMaster_apiKey = "uZn2m2M44KW7fdc115Dj9MjlhoXGoMEu";
 const spotify_clientId = "6ae2557807bb473e89ced5807fb4866c";
@@ -172,7 +171,8 @@ app.get("/getCardDetails", async function (req, res) {
         }
         JSONObj.name = response?.body?.artists?.items[0]?.name ?? "";
         JSONObj.image = response?.body?.artists?.items[0]?.images[0]?.url ?? "";
-        JSONObj.followers = response.body.artists.items[0].followers.total;
+        JSONObj.followers =
+          response?.body?.artists?.items[0]?.followers?.total ?? "";
         JSONObj.popularity =
           response?.body?.artists?.items[0]?.popularity ?? "";
         JSONObj.spotifyLink =

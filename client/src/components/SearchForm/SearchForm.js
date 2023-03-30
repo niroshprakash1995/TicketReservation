@@ -50,6 +50,12 @@ function SearchForm({ setData, setNoResultsFlag }) {
       .get("/keywordsearch", { params: { keyword: param } })
       .then((response) => {
         setKeywords(response.data.keywords);
+        if (response.data.keywords.length === 0) {
+          const keywordElement = document.getElementById("keyword");
+          if (keywordElement) {
+            keywordElement.style.display = "none";
+          }
+        }
       })
       .catch((error) => {
         console.log("Error in keyword search at client");

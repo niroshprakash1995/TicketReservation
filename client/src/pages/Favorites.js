@@ -37,7 +37,7 @@ function Favorites() {
           <div className="table-responsive">
             <Table
               striped
-              variant="light"
+              variant="light table-hover"
               className="tbl w-75 mx-auto rounded rounded-3 overflow-hidden"
             >
               <thead>

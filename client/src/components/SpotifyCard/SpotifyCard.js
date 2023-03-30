@@ -8,7 +8,21 @@ import Carousel from "react-bootstrap/Carousel";
 import Message from "../Message/Message";
 
 function SpotifyCard({ spotifyTabData }) {
-  if (spotifyTabData.length === 0) {
+  var emptyData = false;
+  if (
+    spotifyTabData[0].album1img === "" &&
+    spotifyTabData[0].album2img === "" &&
+    spotifyTabData[0].album3img === "" &&
+    spotifyTabData[0].followers === "" &&
+    spotifyTabData[0].image === "" &&
+    spotifyTabData[0].name === "" &&
+    spotifyTabData[0].popularity === "" &&
+    spotifyTabData[0].spotifyLink === ""
+  ) {
+    emptyData = true;
+  }
+
+  if (spotifyTabData.length === 0 || emptyData) {
     return (
       <div
         className="spotify-card justify-content-center align-items-center w-100"
@@ -31,56 +45,68 @@ function SpotifyCard({ spotifyTabData }) {
             <div className="pt-3 d-flex text-center justify-content-center">
               <div className="d-flex container pb-1 flex-wrap align-items-center justify-content-center">
                 <div className="text-center col-3 justify-content-center align-items-center containerFull">
-                  <img
-                    className="rounded-circle"
-                    alt="Not available"
-                    src={item.image}
-                    style={{ height: "150px", width: "auto" }}
-                  />
-                  <p className="text-center d-flex justify-content-center font-weight-bold">
-                    {item.name}
-                  </p>
+                  {item.image && (
+                    <img
+                      className="rounded-circle"
+                      alt="Not available"
+                      src={item.image}
+                      style={{ height: "150px", width: "auto" }}
+                    />
+                  )}
+                  {item.name && (
+                    <p className="text-center d-flex justify-content-center font-weight-bold">
+                      {item.name}
+                    </p>
+                  )}
                 </div>
 
                 <div className="d-flex col-2 justify-content-center align-items-center containerFull">
-                  <div className="d-flex flex-column align-items-center">
-                    <p className="">Popularity</p>
-                    <div style={{ width: 34, height: 34 }}>
-                      <CircularProgressbar
-                        value={item.popularity}
-                        text={`${item.popularity}`}
-                      />
+                  {item.popularity && (
+                    <div className="d-flex flex-column align-items-center">
+                      <p className="">Popularity</p>
+                      <div style={{ width: 34, height: 34 }}>
+                        <CircularProgressbar
+                          value={item.popularity}
+                          text={`${item.popularity}`}
+                        />
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
 
                 <div className="d-flex col-2 justify-content-center align-items-center containerFull">
-                  <div className="d-flex flex-column align-items-center">
-                    <p>Followers</p>
-                    <label className="pb-2">
-                      {item.followers.toLocaleString()}
-                    </label>
-                  </div>
+                  {item.followers && (
+                    <div className="d-flex flex-column align-items-center">
+                      <p>Followers</p>
+                      <label className="pb-2">
+                        {item.followers.toLocaleString()}
+                      </label>
+                    </div>
+                  )}
                 </div>
 
                 <div className="d-flex col-2 justify-content-center align-items-center containerFull">
-                  <div className="d-flex flex-column align-items-center">
-                    <p>Spotify Link</p>
-                    <a
-                      href={item.spotifyLink}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="spotify social"
-                    >
-                      <FontAwesomeIcon icon={faSpotify} size="2x" />
-                    </a>
-                  </div>
+                  {item.spotifyLink && (
+                    <div className="d-flex flex-column align-items-center">
+                      <p>Spotify Link</p>
+                      <a
+                        href={item.spotifyLink}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="spotify social"
+                      >
+                        <FontAwesomeIcon icon={faSpotify} size="2x" />
+                      </a>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
-            <div className="album-featuring text-wrap">
-              <p className="pt-2 text-wrap">Album featuring {item.name}</p>
-            </div>
+            {item.name && (
+              <div className="album-featuring text-wrap">
+                <p className="pt-2 text-wrap">Album featuring {item.name}</p>
+              </div>
+            )}
             <div className="d-flex row justify-content-center align-content-center">
               {item.album1img && (
                 <img
@@ -126,56 +152,68 @@ function SpotifyCard({ spotifyTabData }) {
               <div className="pt-3 d-flex text-center justify-content-center">
                 <div className="d-flex container pb-1 flex-wrap align-items-center justify-content-center">
                   <div className="text-center col-3 justify-content-center align-items-center containerFull">
-                    <img
-                      className="rounded-circle"
-                      alt="ArtistIcon"
-                      src={item.image}
-                      style={{ height: "150px", width: "auto" }}
-                    />
-                    <p className="text-center d-flex justify-content-center font-weight-bold">
-                      {item.name}
-                    </p>
+                    {item.image && (
+                      <img
+                        className="rounded-circle"
+                        alt="ArtistIcon"
+                        src={item.image}
+                        style={{ height: "150px", width: "auto" }}
+                      />
+                    )}
+                    {item.name && (
+                      <p className="text-center d-flex justify-content-center font-weight-bold">
+                        {item.name}
+                      </p>
+                    )}
                   </div>
 
                   <div className="d-flex col-2 justify-content-center align-items-center containerFull">
-                    <div className="d-flex flex-column align-items-center">
-                      <p className="">Popularity</p>
-                      <div style={{ width: 34, height: 36 }}>
-                        <CircularProgressbar
-                          value={item.popularity}
-                          text={`${item.popularity}`}
-                        />
+                    {item.popularity && (
+                      <div className="d-flex flex-column align-items-center">
+                        <p className="">Popularity</p>
+                        <div style={{ width: 34, height: 36 }}>
+                          <CircularProgressbar
+                            value={item.popularity}
+                            text={`${item.popularity}`}
+                          />
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </div>
 
                   <div className="d-flex col-2 justify-content-center align-items-center containerFull">
-                    <div className="d-flex flex-column align-items-center followers">
-                      <p>Followers</p>
-                      <label className="pb-2">
-                        {item.followers.toLocaleString()}
-                      </label>
-                    </div>
+                    {item.followers && (
+                      <div className="d-flex flex-column align-items-center followers">
+                        <p>Followers</p>
+                        <label className="pb-2">
+                          {item.followers.toLocaleString()}
+                        </label>
+                      </div>
+                    )}
                   </div>
 
                   <div className="d-flex col-2 justify-content-center align-items-center containerFull">
-                    <div className="d-flex flex-column align-items-center">
-                      <p>Spotify Link</p>
-                      <a
-                        href={item.spotifyLink}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="spotify social"
-                      >
-                        <FontAwesomeIcon icon={faSpotify} size="2x" />
-                      </a>
-                    </div>
+                    {item.spotifyLink && (
+                      <div className="d-flex flex-column align-items-center">
+                        <p>Spotify Link</p>
+                        <a
+                          href={item.spotifyLink}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="spotify social"
+                        >
+                          <FontAwesomeIcon icon={faSpotify} size="2x" />
+                        </a>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
-              <div className="album-featuring text-wrap">
-                <p className="pt-2 text-wrap">Album featuring {item.name}</p>
-              </div>
+              {item.name && (
+                <div className="album-featuring text-wrap">
+                  <p className="pt-2 text-wrap">Album featuring {item.name}</p>
+                </div>
+              )}
               <div className="d-flex row justify-content-center align-content-center">
                 {item.album1img && (
                   <img

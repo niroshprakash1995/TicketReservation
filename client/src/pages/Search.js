@@ -61,22 +61,33 @@ function Search() {
         var subTypeName = eventData?.classifications[0]?.subType?.name ?? "";
         subTypeName =
           subTypeName.toLowerCase() === "undefined" ? "" : subTypeName;
-
         var genres = "";
         if (segmentName !== "") {
-          genres = segmentName;
+          genres = genres + segmentName;
         }
         if (genreName !== "") {
-          genres = genres + " | " + genreName;
+          if (genres !== "") {
+            genres = genres + " | ";
+          }
+          genres = genres + genreName;
         }
         if (subGenreName !== "") {
-          genres = genres + " | " + subGenreName;
+          if (genres !== "") {
+            genres = genres + " | ";
+          }
+          genres = genres + subGenreName;
         }
         if (typeName !== "") {
-          genres = genres + " | " + typeName;
+          if (genres !== "") {
+            genres = genres + " | ";
+          }
+          genres = genres + typeName;
         }
         if (subTypeName !== "") {
-          genres = genres + " | " + subTypeName;
+          if (genres !== "") {
+            genres = genres + " | ";
+          }
+          genres = genres + subTypeName;
         }
       }
 
@@ -183,10 +194,16 @@ function Search() {
           address = addressLine;
         }
         if (city !== "") {
-          address = address + ", " + city;
+          if (address !== "") {
+            address = address + ", ";
+          }
+          address = address + city;
         }
         if (state !== "") {
-          address = address + ", " + state;
+          if (address !== "") {
+            address = address + ", ";
+          }
+          address = address + state;
         }
         var phoneNumber = parentNode?.boxOfficeInfo?.phoneNumberDetail ?? "";
         phoneNumber =
