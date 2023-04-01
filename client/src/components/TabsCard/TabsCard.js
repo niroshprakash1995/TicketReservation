@@ -66,7 +66,7 @@ function TabsCard({
     setIsFilled(!isFilled);
   };
   return (
-    <div className="container w-md-50 w-sm-100 detailscard mb-5">
+    <div className="container detailscard mb-5 flex-row col-lg-7">
       <button onClick={onBackClick} className="btn backbutton">
         &lt;<u>Back</u>
       </button>

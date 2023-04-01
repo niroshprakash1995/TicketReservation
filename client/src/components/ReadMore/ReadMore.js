@@ -37,7 +37,7 @@ function ReadMore({ inputText }) {
               <div>
                 <span
                   style={{ display: "block", color: "#49a1eb" }}
-                  class="pointer"
+                  className="pointer"
                 >
                   <span style={{ borderBottom: "1px solid" }}>Show less</span>
                   <FaAngleUp />

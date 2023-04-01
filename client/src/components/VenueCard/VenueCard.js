@@ -47,8 +47,8 @@ function VenueCard({ venueTabData }) {
   return (
     <div>
       <div className="container">
-        <div className="row" id="venueDetails">
-          <div className="col justify-content-center text-center pt-5">
+        <div className="row flex-md-row flex-column mx-auto" id="venueDetails">
+          <div className="col justify-content-center text-center pt-2">
             {venueTabData?.name && (
               <div>
                 <label>Name</label>
@@ -74,7 +74,7 @@ function VenueCard({ venueTabData }) {
               </div>
             )}
           </div>
-          <div className="col justify-content-center text-center pt-5">
+          <div className="col justify-content-center text-center pt-2">
             {venueTabData?.openHoursDetail && (
               <div className="pb-3">
                 <label>Open Hours</label>

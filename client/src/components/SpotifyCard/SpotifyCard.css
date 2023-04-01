@@ -33,27 +33,3 @@
 .followers{
     margin-bottom: 2px;
 }
-
-@media (max-width: 768px) {
-    .album-featuring {
-        text-align: center !important;
-        margin-left: 0px;
-    }
-} 
-
-@media (max-width: 820px) {
-    .album-featuring {
-        text-align: center;
-    }
-} 
-@media (min-width: 821px) {
-    .album-featuring {
-        margin-left: 120px;
-    }
-} 
-
-  @media (max-width: 1100px) {
-    .containerFull {
-        width: 100% !important;
-    }
-  }

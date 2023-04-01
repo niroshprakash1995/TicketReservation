@@ -141,7 +141,10 @@ function SearchForm({ setData, setNoResultsFlag }) {
 
   return (
     <div>
-      <div className="container-sm p-3 search-form">
+      <div
+        className="container-sm p-3 search-form"
+        style={{ maxWidth: "700px" }}
+      >
         <Form className="rounded-4 p-4" onSubmit={handleSubmit}>
           <h4 className="formHeading">Events Search</h4>
           <hr id="form-hr"></hr>

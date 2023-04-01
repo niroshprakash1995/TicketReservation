@@ -34,14 +34,13 @@ function SpotifyCard({ spotifyTabData }) {
         {spotifyTabData.map((item, index) => (
           <div key={index}>
             <div className="pt-3 d-flex text-center justify-content-center">
-              <div className="d-flex container pb-1 flex-wrap align-items-center justify-content-center">
-                <div className="text-center col-3 justify-content-center align-items-center containerFull">
+              <div className="d-flex row container pb-1 align-items-center justify-content-center">
+                <div className="text-center col-md-3 justify-content-center align-items-center">
                   {item.image && (
                     <img
-                      className="rounded-circle"
+                      className="rounded-circle col-7 col-md-10 mb-3"
                       alt="Not available"
                       src={item.image}
-                      style={{ height: "150px", width: "auto" }}
                     />
                   )}
                   {item.name && (
@@ -51,7 +50,7 @@ function SpotifyCard({ spotifyTabData }) {
                   )}
                 </div>
 
-                <div className="d-flex col-2 justify-content-center align-items-center containerFull">
+                <div className="col-md-2 justify-content-center align-items-center">
                   {item.popularity && (
                     <div className="d-flex flex-column align-items-center">
                       <p className="">Popularity</p>
@@ -65,7 +64,7 @@ function SpotifyCard({ spotifyTabData }) {
                   )}
                 </div>
 
-                <div className="d-flex col-2 justify-content-center align-items-center containerFull">
+                <div className="col-md-2 justify-content-center align-items-center">
                   {item.followers && (
                     <div className="d-flex flex-column align-items-center">
                       <p>Followers</p>
@@ -76,7 +75,7 @@ function SpotifyCard({ spotifyTabData }) {
                   )}
                 </div>
 
-                <div className="d-flex col-2 justify-content-center align-items-center containerFull">
+                <div className="col-md-2 justify-content-center align-items-center">
                   {item.spotifyLink && (
                     <div className="d-flex flex-column align-items-center">
                       <p>Spotify Link</p>
@@ -94,33 +93,30 @@ function SpotifyCard({ spotifyTabData }) {
               </div>
             </div>
             {item.name && (
-              <div className="album-featuring text-wrap">
+              <div className="album-featuring col-9 mx-auto d-flex flex-wrap justify-content-center justify-content-md-start text-center text-md-left">
                 <p className="pt-2 text-wrap">Album featuring {item.name}</p>
               </div>
             )}
             <div className="d-flex row justify-content-center align-content-center">
               {item.album1img && (
                 <img
-                  className="col-3 mb-3"
+                  className="col-7 col-md-3 mb-3"
                   src={item.album1img}
                   alt="First"
-                  style={{ height: "180px", width: "auto" }}
                 />
               )}
               {item.album2img && (
                 <img
-                  className="col-3 mb-3"
+                  className="col-7 col-md-3 mb-3"
                   src={item.album2img}
                   alt="Second"
-                  style={{ height: "180px", width: "auto" }}
                 />
               )}
               {item.album3img && (
                 <img
-                  className="col-3 mb-3"
+                  className="col-7 col-md-3 mb-3"
                   src={item.album3img}
                   alt="Third"
-                  style={{ height: "180px", width: "auto" }}
                 />
               )}
             </div>
@@ -141,14 +137,13 @@ function SpotifyCard({ spotifyTabData }) {
           {spotifyTabData.map((item, index) => (
             <Carousel.Item key={index}>
               <div className="pt-3 d-flex text-center justify-content-center">
-                <div className="d-flex container pb-1 flex-wrap align-items-center justify-content-center">
-                  <div className="text-center col-3 justify-content-center align-items-center containerFull">
+                <div className="d-flex row container pb-1 align-items-center justify-content-center">
+                  <div className="text-center col-md-3 justify-content-center align-items-center">
                     {item.image && (
                       <img
-                        className="rounded-circle"
-                        alt="ArtistIcon"
+                        className="rounded-circle col-7 col-md-10 mb-3"
+                        alt="Not available"
                         src={item.image}
-                        style={{ height: "150px", width: "auto" }}
                       />
                     )}
                     {item.name && (
@@ -158,10 +153,10 @@ function SpotifyCard({ spotifyTabData }) {
                     )}
                   </div>
 
-                  <div className="d-flex col-2 justify-content-center align-items-center containerFull">
+                  <div className="col-md-2 justify-content-center align-items-center">
                     {item.popularity && (
                       <div className="d-flex flex-column align-items-center">
-                        <p className="">Popularity</p>
+                        <p className="align-items-center">Popularity</p>
                         <div style={{ width: 34, height: 36 }}>
                           <CircularProgressbar
                             value={item.popularity}
@@ -172,9 +167,9 @@ function SpotifyCard({ spotifyTabData }) {
                     )}
                   </div>
 
-                  <div className="d-flex col-2 justify-content-center align-items-center containerFull">
+                  <div className="col-md-2 justify-content-center align-items-center">
                     {item.followers && (
-                      <div className="d-flex flex-column align-items-center followers">
+                      <div className="align-items-center followers">
                         <p>Followers</p>
                         <label className="pb-2">
                           {item.followers.toLocaleString()}
@@ -183,9 +178,9 @@ function SpotifyCard({ spotifyTabData }) {
                     )}
                   </div>
 
-                  <div className="d-flex col-2 justify-content-center align-items-center containerFull">
+                  <div className="col-md-2 justify-content-center align-items-center">
                     {item.spotifyLink && (
-                      <div className="d-flex flex-column align-items-center">
+                      <div className="align-items-center">
                         <p>Spotify Link</p>
                         <a
                           href={item.spotifyLink}
@@ -201,33 +196,30 @@ function SpotifyCard({ spotifyTabData }) {
                 </div>
               </div>
               {item.name && (
-                <div className="album-featuring text-wrap">
+                <div className="album-featuring col-9 mx-auto d-flex flex-wrap justify-content-center justify-content-md-start text-center text-md-left">
                   <p className="pt-2 text-wrap">Album featuring {item.name}</p>
                 </div>
               )}
               <div className="d-flex row justify-content-center align-content-center">
                 {item.album1img && (
                   <img
-                    className="col-3 mb-3"
+                    className="col-7 col-md-3 mb-3"
                     src={item.album1img}
                     alt="First"
-                    style={{ height: "180px", width: "auto" }}
                   />
                 )}
                 {item.album2img && (
                   <img
-                    className="col-3 mb-3"
+                    className="col-7 col-md-3 mb-3"
                     src={item.album2img}
                     alt="Second"
-                    style={{ height: "180px", width: "auto" }}
                   />
                 )}
                 {item.album3img && (
                   <img
-                    className="col-3 mb-3"
+                    className="col-7 col-md-3 mb-3"
                     src={item.album3img}
                     alt="Third"
-                    style={{ height: "180px", width: "auto" }}
                   />
                 )}
               </div>

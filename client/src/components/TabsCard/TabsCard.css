@@ -3,8 +3,11 @@
     padding-left: 0% !important;
     padding-right: 0% !important;
     margin-top: 5%;
+    width: 95%;
+    max-width: 890px;
     backdrop-filter: blur(6px);
 }
+
 .detailscard-svg:hover {
     cursor: pointer;
 }
@@ -25,6 +28,7 @@
     font-weight: bold;
     background-color: transparent;
     border: 0;
+    min-width: fit-content !important;
 }
 .MuiTabs-indicator{
     border-bottom: 3px solid mediumblue !important;
@@ -36,30 +40,6 @@
 
 .backbutton {
     color: white !important;
-}
-@media screen and (min-width: 768px) {
-    .detailscard {
-        width: 60% !important;
-   }
-   .container {
-    flex-direction: row;
-    }
-}
-@media screen and (max-width: 768px) {
-    .detailscard {
-        width: 92% !important;
-   }
-   .container {
-    flex-direction: row;
-    }
-    .MuiButtonBase-root{
-        width: auto !important;
-    }
-}
-@media screen and (max-width: 768px) {
-    #category {
-        width: 75% !important;
-   }
 }
 
 .react-swipeable-view-container {

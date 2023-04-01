@@ -29,13 +29,6 @@ form {
     width: 100px;
 }
 
-@media only screen and (min-width: 700px) {
-    .search-form {
-        max-width: 700px;
-    }
-
-}
-
 .req label:after {
     content: " *";
     color: red;
